@@ -16,8 +16,8 @@ export const admitAd = sqliteTable("admitad_postback", {
     reward_ready: text(),
     order_id: int(),
     order_sum: int(),
-    click_time: int({ mode: "timestamp_ms" }),
-    time: int({ mode: "timestamp_ms" }),
-    convertion_time: int({ mode: "timestamp_ms" }),
+    click_time: text(),
+    time: text(),
+    convertion_time: text(),
     type: text(),
 });

@@ -1,3 +1,4 @@
+import { saveMdealPostback } from '@/db/mdeal/handler';
 import { NextResponse, type NextRequest } from 'next/server'
 
 export async function GET(request: NextRequest) {
@@ -5,22 +6,19 @@ export async function GET(request: NextRequest) {
     const params = url.searchParams;
 
     //parameters receiving
-    const transactionId = params.get("tid");
-    const offerId = params.get("oid");
-    const s1 = params.get("s1");
-    const s2 = params.get("s2");
-    const s3 = params.get("s3");
-    const s4 = params.get("s4");
-    const s5 = params.get("s5");
+    const offerId = params.get("offer-id");
+    const transactionId = params.get("transaction-id");
+    const subid1 = params.get("subid1");
+    const subid2 = params.get("subid2");
+    const subid3 = params.get("subid3");
+    const subid4 = params.get("subid4");
+    const subid5 = params.get("subid5");
 
-    console.log("url: ", url);
-    console.log("tid: ", transactionId);
-    console.log("oid: ", offerId);
-    console.log("s1: ", s1);
-    console.log("s2: ", s2);
-    console.log("s3: ", s3);
-    console.log("s4: ", s4);
-    console.log("s5: ", s5);
-
+    try {
+        const resp = await saveMdealPostback({ offerId, transactionId, subid1, subid2, subid3, subid4, subid5 });
+        console.log(resp)
+    } catch (error) {
+        console.log(error)
+    }
     return NextResponse.json({ status: "success" })
 }

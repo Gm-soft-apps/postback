@@ -24,6 +24,5 @@ export const saveAdmitadPostback = async (query: any) => {
         convertion_time: query.conversionTime,
         type: query.type
     }
-    console.log(query.time)
     return await db.insert(admitAd).values(data).returning();
 }
