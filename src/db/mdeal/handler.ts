@@ -3,7 +3,17 @@
 import { db } from "@/turso"
 import { mdeal } from "./schema"
 
-export const saveMdealPostback = async (query: any) => {
+interface MdealPostbackQuery {
+    offerId: string | null;
+    transactionId: string | null;
+    subid1?: string | null;
+    subid2?: string | null;
+    subid3?: string | null;
+    subid4?: string | null;
+    subid5?: string | null;
+}
+
+export const saveMdealPostback = async (query: MdealPostbackQuery) => {
     const data = {
         offer_id: query.offerId,
         transaction_id: query.transactionId,
