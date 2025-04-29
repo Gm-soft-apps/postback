@@ -16,9 +16,9 @@ export async function GET(request: NextRequest) {
 
     try {
         const resp = await saveMdealPostback({ offerId, transactionId, subid1, subid2, subid3, subid4, subid5 });
-        console.log(resp)
+        console.log("db resp: ", resp)
     } catch (error) {
-        console.log(error)
+        console.log("error: ", error)
     }
     return NextResponse.json({ status: "success" })
 }
