@@ -15,6 +15,13 @@
       "when": 1742959913733,
       "tag": "0001_nifty_star_brand",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1745943068213,
+      "tag": "0002_far_baron_zemo",
+      "breakpoints": true
     }
   ]
 }
