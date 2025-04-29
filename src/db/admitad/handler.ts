@@ -3,7 +3,28 @@
 import { db } from "@/turso"
 import { admitAd } from "./schema"
 
-export const saveAdmitadPostback = async (query: any) => {
+interface AdmitadPostbackQuery {
+    offerId: string | null;
+    offerName: string | null;
+    subId: string | null;
+    action: string | null;
+    actionId: string | null;
+    subid1: string | null;
+    subid2: string | null;
+    subid3: string | null;
+    subid4: string | null;
+    paymentSum: string | null;
+    paymentStatus: string | null;
+    rewardReady: string | null;
+    orderId: string | null;
+    orderSum: string | null;
+    clickTime: string | null;
+    time: string | null;
+    conversionTime: string | null;
+    type: string | null;
+  }
+
+export const saveAdmitadPostback = async (query: AdmitadPostbackQuery) => {
     const data = {
         offer_id: query.offerId,
         offer_name: query.offerName,
