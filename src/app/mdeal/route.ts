@@ -5,6 +5,10 @@ export async function GET(request: NextRequest) {
     const url = request.nextUrl;
     const params = url.searchParams;
 
+    if (params.size === 0) {
+        return NextResponse.json({ status: "failed" })
+    }
+
     //parameters receiving
     const offerId = params.get("offer-id");
     const transactionId = params.get("transaction-id");

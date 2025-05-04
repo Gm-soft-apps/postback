@@ -5,6 +5,10 @@ export async function GET(request: NextRequest) {
     const url = request.nextUrl;
     const params = url.searchParams;
 
+    if (params.size === 0) {
+        return NextResponse.json({ status: "failed" })
+    }
+
     //parameters receiving
     const offerId = params.get("offer_id");
     const offerName = params.get("offer_name");
@@ -29,30 +33,10 @@ export async function GET(request: NextRequest) {
 
     try {
         const resp = await saveAdmitadPostback(queryData);
-        console.log(resp)
+        console.log("db resp: ", resp)
     } catch (error) {
-        console.log(error)
+        console.log("error: ", error)
     }
-
-    // console.log("url: ", url);
-    // console.log("offerId: ", offerId);
-    // console.log("offerName: ", offerName);
-    // console.log("subId: ", subId);
-    // console.log("action: ", action);
-    // console.log("actionId: ", actionId);
-    // console.log("subid1: ", subid1);
-    // console.log("subid2: ", subid2);
-    // console.log("subid3: ", subid3);
-    // console.log("subid4: ", subid4);
-    // console.log("paymentSum: ", paymentSum);
-    // console.log("paymentStatus: ", paymentStatus);
-    // console.log("rewardReady: ", rewardReady);
-    // console.log("orderId: ", orderId);
-    // console.log("orderSum: ", orderSum);
-    // console.log("clickTime: ", clickTime);
-    // console.log("time: ", time);
-    // console.log("conversionTime: ", conversionTime);
-    // console.log("type: ", type);
 
     return NextResponse.json({ status: "success" })
 }
