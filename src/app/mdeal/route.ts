@@ -12,11 +12,11 @@ export async function GET(request: NextRequest) {
     //parameters receiving
     const offerId = params.get("offer-id");
     const transactionId = params.get("transaction-id");
-    const subid1 = params.get("subid1");
-    const subid2 = params.get("subid2");
-    const subid3 = params.get("subid3");
-    const subid4 = params.get("subid4");
-    const subid5 = params.get("subid5");
+    const subid1 = params.get("s1");
+    const subid2 = params.get("s2");
+    const subid3 = params.get("s3");
+    const subid4 = params.get("s4");
+    const subid5 = params.get("s5");
 
     try {
         const resp = await saveMdealPostback({ offerId, transactionId, subid1, subid2, subid3, subid4, subid5 });
