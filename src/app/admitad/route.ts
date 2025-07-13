@@ -6,7 +6,11 @@ export async function GET(request: NextRequest) {
     const params = url.searchParams;
 
     if (params.size === 0) {
-        return NextResponse.json({ status: "failed" })
+        console.log("No Query Param Found!");
+        return NextResponse.json(
+            { status: "failed", reason: "0" },
+            { status: 400 }
+        );
     }
 
     //parameters receiving
@@ -35,8 +39,15 @@ export async function GET(request: NextRequest) {
         const resp = await saveAdmitadPostback(queryData);
         console.log("db resp: ", resp)
     } catch (error) {
-        console.log("error: ", error)
+        console.error("Database error:", error);
+        return NextResponse.json(
+            { status: "error", message: "Something went wrong. Please try again later." },
+            { status: 500 }
+        );
     }
 
-    return NextResponse.json({ status: "success" })
+    return NextResponse.json(
+        { status: "success" },
+        { status: 200 }
+    );
 }

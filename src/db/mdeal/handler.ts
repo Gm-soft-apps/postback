@@ -11,6 +11,7 @@ interface MdealPostbackQuery {
     subid3?: string | null;
     subid4?: string | null;
     subid5?: string | null;
+    ip?: string | null;
 }
 
 export const saveMdealPostback = async (query: MdealPostbackQuery) => {
@@ -23,6 +24,7 @@ export const saveMdealPostback = async (query: MdealPostbackQuery) => {
         subid4: query.subid4,
         subid5: query.subid5,
         convertion_time: new Date(),
+        ip: query.ip,
     }
 
     return await db.insert(mdeal).values(data).returning();

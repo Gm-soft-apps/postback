@@ -10,4 +10,5 @@ export const mdeal = sqliteTable("mdeal_postback", {
     subid4: text(),
     subid5: text(),
     convertion_time: int({ mode: "timestamp_ms" }),
+    ip: text(),
 })
