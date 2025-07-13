@@ -29,5 +29,6 @@ CREATE TABLE `mdeal_postback` (
 	`subid3` text,
 	`subid4` text,
 	`subid5` text,
-	`convertion_time` integer
+	`convertion_time` integer,
+	`ip` text
 );
