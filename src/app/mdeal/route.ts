@@ -32,8 +32,24 @@ export async function GET(request: NextRequest) {
     }
 
     try {
-        const resp = await saveMdealPostback({ offerId, transactionId, subid1, subid2, subid3, subid4, subid5, ip });
-        console.log("db resp: ", resp)
+        const conversion = await saveMdealPostback({ offerId, transactionId, subid1, subid2, subid3, subid4, subid5, ip });
+
+        const myURL = "https://eazyearn.netlify.app/api/ms/save-mdeal-conversion"
+        const resp = await fetch(myURL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "api": `${process.env.MY_API_KEY}`,
+            },
+            body: JSON.stringify(conversion)
+        })
+
+        if (!resp.ok) {
+            console.warn("Gm-App API returned error:", resp.status, await resp.text());
+        }
+
+        console.log("db resp: ", conversion);
+        console.log("saved to Gm-App? ", await resp.json())
     } catch (error) {
         console.error("Database error:", error);
         return NextResponse.json(
@@ -41,7 +57,7 @@ export async function GET(request: NextRequest) {
             { status: 500 }
         );
     }
-    
+
     console.log("success, mdeal postback data saved!")
     return NextResponse.json(
         { status: "success" },

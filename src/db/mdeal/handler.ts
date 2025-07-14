@@ -27,5 +27,6 @@ export const saveMdealPostback = async (query: MdealPostbackQuery) => {
         ip: query.ip,
     }
 
-    return await db.insert(mdeal).values(data).returning();
+    const resp = await db.insert(mdeal).values(data).returning();
+    return resp[0];
 }
