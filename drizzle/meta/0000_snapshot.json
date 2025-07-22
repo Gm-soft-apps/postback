@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "ecae46a8-bd2f-427e-940e-b9e4b9c5a0be",
+  "id": "2f40730a-79e5-4238-b70f-7e6a4d5025c2",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "admitad_postback": {
